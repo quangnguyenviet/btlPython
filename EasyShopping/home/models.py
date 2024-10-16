@@ -21,6 +21,9 @@ class Product(models.Model):
     shippingFee = models.DecimalField(max_digits=6, decimal_places=0, default=0) 
     productImage = models.ImageField(upload_to='products/', null=False, blank=False, default='static/images/userImageDefault.png')
 
+    def newPrice(self):
+        return self.price*(1- self.discount)
+    
     class Meta:
         db_table = 'product'
 
